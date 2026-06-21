@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T Balaji Logistics | Smart Next-Gen Cargo & Freight Solutions</title>
+  <meta name="description" content="T Balaji Logistics provides secure, high-speed cargo delivery, warehousing, and supply chain solutions globally. Track your container in real time.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Premium Header & Navbar -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">TB</div>
+        <span>T BALAJI <span style="font-weight: 300; color: var(--text-secondary);">LOGISTICS</span></span>
+      </a>
+      
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="services.html#quote" class="nav-cta">Estimate Quote</a>
+      </nav>
+
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content reveal active">
+        <div class="hero-tag">
+          <span class="tag-pulse"></span>
+          Revolutionizing Supply Chain Operations
+        </div>
+        <h1>Seamless. Swift.<br><span class="text-gradient-cyan">Global Freight Hub.</span></h1>
+        <p class="hero-desc">
+          T Balaji Logistics powers industries with intelligent transport networks, advanced cold storage hubs, and secure intermodal logistics. We bring speed and structural integrity to your global trade.
+        </p>
+        <div class="hero-actions">
+          <a href="services.html" class="btn btn-primary">
+            Our Services
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal active">
+        <div class="hero-graphic-wrap">
+          <div class="glow-globe"></div>
+          <div class="glow-globe-inner"></div>
+          <div class="freight-ring"></div>
+          
+          <!-- Floating Status 1 -->
+          <div class="hero-card-floating">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent);">SEA FREIGHT</span>
+              <span style="font-size: 0.7rem; color: var(--text-secondary);">FCL Cargo</span>
+            </div>
+            <div style="font-size: 1.1rem; font-family: var(--font-display); font-weight: 800; color: #fff; margin-bottom: 0.25rem;">Shipment #TB-8890</div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary); display: flex; align-items: center; gap: 5px;">
+              <span style="width: 6px; height: 6px; border-radius: 50%; background-color: var(--primary); display: inline-block;"></span>
+              Arrived at Nagpur ICD
+            </div>
+          </div>
+
+          <!-- Floating Status 2 -->
+          <div class="floating-delivery">
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--primary); margin-bottom: 0.3rem;">EXPRESS GROUND</div>
+            <div style="font-size: 0.9rem; font-weight: 600; color: #fff;">Route BOM → BLR</div>
+            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.3rem; display: flex; justify-content: space-between;">
+              <span>Progress: 92%</span>
+              <span style="color: #10b981; font-weight: 700;">On Time</span>
+            </div>
+            <div style="width: 100%; height: 4px; background-color: rgba(255,255,255,0.08); border-radius: 2px; margin-top: 5px; overflow: hidden;">
+              <div style="width: 92%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 2px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Tracking Simulator Section -->
+  <section class="container reveal">
+    <div class="section-title-wrap">
+      <span class="section-subtitle">Real-Time Dispatch Control</span>
+      <h2>Instant Cargo Tracking</h2>
+      <p style="max-width: 600px; margin: 0 auto; color: var(--text-secondary);">
+        Type in your container or cargo code to check dispatch milestones. Try typing <strong style="color: var(--primary);">TB-8890-IND</strong> or <strong style="color: var(--accent);">TB-1024-GLO</strong> to simulate predefined tracking journeys.
+      </p>
+    </div>
+
+    <div class="tracking-wrapper glass-card">
+      <form class="tracking-form" id="trackForm">
+        <div class="tracking-input-wrap">
+          <input type="text" class="tracking-input" id="trackInput" placeholder="Enter tracking code (e.g., TB-8890-IND)" required autocomplete="off">
+        </div>
+        <button type="submit" class="btn btn-primary" style="border-radius: 50px;">Track Shipment</button>
+      </form>
+
+      <!-- Tracking Output Container (Populated by JS) -->
+      <div class="tracking-results results-hidden" id="trackResults">
+        <div class="tracking-status-header">
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Tracking Number</div>
+            <div id="resTrackingCode" style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: #fff;">-</div>
+          </div>
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 4px; text-align: right;">Status</div>
+            <span id="resStatusBadge" class="status-badge">-</span>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; background: rgba(255,255,255,0.02); padding: 1.25rem; border-radius: 8px;">
+          <div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Route Dispatch</div>
+            <div id="resRoute" style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary);">-</div>
+          </div>
+          <div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Assigned Carrier</div>
+            <div id="resCarrier" style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary);">-</div>
+          </div>
+        </div>
+
+        <div class="tracking-timeline" id="resTimeline">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Stats Section -->
+  <section class="stats-section reveal">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num text-gradient-cyan">99.8%</div>
+          <div class="stat-label">On-Time Deliveries</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num text-gradient-orange">1.2M+</div>
+          <div class="stat-label">Metric Tons Shipped</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num text-gradient-cyan">250+</div>
+          <div class="stat-label">Heavy Truck Fleet</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num text-gradient-orange">24/7</div>
+          <div class="stat-label">Customs Assistance</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Services Section -->
+  <section class="container reveal">
+    <div class="section-title-wrap">
+      <span class="section-subtitle">Scope of Operations</span>
+      <h2>Core Logistics Verticals</h2>
+      <p style="max-width: 600px; margin: 0 auto; color: var(--text-secondary);">
+        Our multimodal capabilities span oceans, domestic highways, air cargo slots, and advanced logistics warehouses.
+      </p>
+    </div>
+
+    <div class="services-highlight-grid">
+      <!-- Card 1 -->
+      <div class="glass-card service-highlight-card">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+        </div>
+        <h3>Express Ground Transport</h3>
+        <p>Premium line-haul networks connecting major industrial centers with high-capacity trucking fleets, GPS monitoring, and temperature-controlled options.</p>
+        <a href="services.html" class="service-link">View Details <span>&rarr;</span></a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="glass-card service-highlight-card">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        </div>
+        <h3>Customized Storage & Hubs</h3>
+        <p>Cross-docking, smart inventory control systems, sorting stations, and distribution parks designed to decrease sorting overheads and speed up delivery.</p>
+        <a href="services.html" class="service-link">View Details <span>&rarr;</span></a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="glass-card service-highlight-card">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </div>
+        <h3>Global Air & Sea Cargo</h3>
+        <p>Strategic consolidations and customs brokers at global docks ensure seamless transition of sea freight containers and high-priority air shipments.</p>
+        <a href="services.html" class="service-link">View Details <span>&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="container reveal">
+    <div class="cta-banner">
+      <div class="cta-content">
+        <h2>Ready to optimize your supply chains?</h2>
+        <p>Partner with T Balaji Logistics for zero-lag cargo transfers, transparent tracking timelines, and customized enterprise warehousing agreements.</p>
+        <a href="contact.html" class="btn btn-primary">
+          Inquire Now
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <a href="index.html" class="logo" style="margin-bottom: 1.5rem;">
+          <div class="logo-icon">TB</div>
+          <span>T BALAJI <span style="font-weight: 300; color: var(--text-secondary);">LOGISTICS</span></span>
+        </a>
+        <p>Connecting industrial hubs, shipping yards, and warehouses through high-speed, digitally tracked transport cargo lines.</p>
+        <div class="social-links">
+          <a href="#" class="social-btn">in</a>
+          <a href="#" class="social-btn">X</a>
+          <a href="#" class="social-btn">f</a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Services</h4>
+        <div class="footer-links">
+          <a href="services.html">Express Ground Freight</a>
+          <a href="services.html">Sea Container Logistics</a>
+          <a href="services.html">Air Cargo Consolidation</a>
+          <a href="services.html">Smart Warehouse Facilities</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="about.html">About Profile</a>
+          <a href="about.html#values">Core Philosophy</a>
+          <a href="about.html#timeline">Growth Timeline</a>
+          <a href="contact.html">Global Offices</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <div class="footer-links">
+          <a href="contact.html">Inquiry Form</a>
+          <a href="index.html">Shipment Tracker</a>
+          <a href="services.html#quote">Freight Rate Estimator</a>
+          <a href="contact.html">Live Assistance</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 T Balaji Logistics. All rights reserved.</p>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="#" style="hover:color: #fff">Privacy Policy</a>
+        <a href="#" style="hover:color: #fff">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
