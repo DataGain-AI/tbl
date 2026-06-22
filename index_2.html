@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tirupati Balaji Logistics | Safe • Reliable • On Time</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .heading-font { font-family: 'Playfair Display', sans-serif; }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.85)), url('https://picsum.photos/id/1074/1920/1080');
+            background-size: cover;
+            background-position: center;
+        }
+        .dark .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.92)), url('https://picsum.photos/id/1074/1920/1080');
+        }
+        
+        .card-hover {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-20px) scale(1.03);
+            box-shadow: 0 30px 60px -15px rgb(220 38 38 / 0.3);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #dc2626;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after { width: 100%; }
+        
+        canvas#truckCanvas { filter: drop-shadow(0 25px 25px rgba(0,0,0,0.4)); }
+    </style>
+</head>
+<body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-200 overflow-x-hidden transition-colors duration-300">
+    <!-- NAVBAR -->
+    <nav class="bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-blue-700 to-red-600 rounded-2xl flex items-center justify-center text-white font-bold text-3xl shadow-inner">TB</div>
+                <div>
+                    <span class="heading-font text-2xl font-bold tracking-tight">TIRUPATI BALAJI</span>
+                    <p class="text-xs text-red-600 dark:text-red-500 -mt-1 font-semibold">LOGISTICS</p>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#home" class="nav-link">HOME</a>
+                <a href="#about" class="nav-link">ABOUT US</a>
+                <a href="#services" class="nav-link">SERVICES</a>
+                <a href="#clients" class="nav-link">CLIENTS</a>
+                <a href="#track" class="nav-link">TRACK</a>
+                <a href="#contact" class="nav-link">CONTACT</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="toggleDarkMode()" id="themeToggle" class="p-3 rounded-2xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+                    <i id="themeIcon" class="fas fa-moon text-xl"></i>
+                </button>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="hidden md:hidden fixed inset-0 bg-white dark:bg-zinc-900 z-50 pt-20 px-6">
+        <div class="flex flex-col gap-6 text-lg font-medium">
+            <a href="#home" onclick="toggleMobileMenu()" class="py-3">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="py-3">About Us</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="py-3">Services</a>
+            <a href="#clients" onclick="toggleMobileMenu()" class="py-3">Clients</a>
+            <a href="#track" onclick="toggleMobileMenu()" class="py-3">Track Shipment</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="py-3">Contact</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section id="home" class="hero-bg h-screen flex items-center relative text-white">
+        <div class="max-w-7xl mx-auto px-6 pt-20 z-10">
+            <div class="max-w-2xl">
+                <h1 class="heading-font text-6xl md:text-7xl font-bold leading-none mb-6 drop-shadow-2xl">
+                    SAFE • RELIABLE •<br>ON TIME
+                </h1>
+                <p class="text-2xl md:text-3xl mb-10 text-blue-100 dark:text-blue-200">Your Trusted Logistics Partner Since 2014</p>
+                <div class="flex gap-4 flex-wrap">
+                    <a href="#contact" class="px-8 py-4 bg-red-600 hover:bg-red-700 transition rounded-2xl font-semibold text-lg inline-flex items-center gap-3 shadow-xl">
+                        GET QUOTE <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#track" class="px-8 py-4 border-2 border-white/80 hover:bg-white hover:text-zinc-900 transition rounded-2xl font-semibold text-lg">TRACK NOW</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3D Truck -->
+        <div class="absolute bottom-12 right-6 lg:right-16 hidden lg:block z-0">
+            <canvas id="truckCanvas" width="480" height="320" class="bg-transparent"></canvas>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 flex flex-col items-center z-10">
+            <p class="text-xs tracking-[3px] opacity-75">SCROLL TO EXPLORE</p>
+            <i class="fas fa-chevron-down text-3xl animate-bounce mt-2"></i>
+        </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section id="about" class="py-24 bg-white dark:bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="./attachments/office.jpeg" alt="Office Interior" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h2 class="heading-font text-5xl font-bold mb-8 text-blue-900 dark:text-white">About Tirupati Balaji Logistics</h2>
+                    <p class="text-lg leading-relaxed mb-8">Established in 2014, we are an integrated transportation, supply chain, and multimodal logistics company covering 2500+ pincodes across India with strong presence in Rajasthan, Haryana, Delhi-NCR & Bhiwadi.</p>
+                    
+                    <div class="grid grid-cols-3 gap-8 text-center">
+                        <div>
+                            <div class="text-5xl font-bold text-red-600">10+</div>
+                            <div class="mt-2 text-sm font-medium">Years of Excellence</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-bold text-red-600">2500+</div>
+                            <div class="mt-2 text-sm font-medium">Pincodes Served</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-bold text-red-600">20+</div>
+                            <div class="mt-2 text-sm font-medium">Corporate Clients</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODERN SERVICES -->
+    <section id="services" class="py-24 bg-gradient-to-b from-zinc-100 to-white dark:from-zinc-900 dark:to-zinc-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-5xl font-bold mb-4">Our Premium Services</h2>
+                <p class="max-w-md mx-auto text-zinc-600 dark:text-zinc-400">Reliable, technology-driven logistics solutions for your business</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group bg-white dark:bg-zinc-800 p-8 rounded-3xl card-hover border border-transparent hover:border-red-200 dark:hover:border-red-900">
+                    <div class="w-16 h-16 bg-red-100 dark:bg-red-950 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-truck text-4xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">Transportation</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400">Full Truck Load, Container Movement & Multi-modal logistics across India.</p>
+                </div>
+                
+                <div class="group bg-white dark:bg-zinc-800 p-8 rounded-3xl card-hover border border-transparent hover:border-red-200 dark:hover:border-red-900">
+                    <div class="w-16 h-16 bg-red-100 dark:bg-red-950 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-warehouse text-4xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">Warehousing</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400">Modern warehousing with inventory management and value-added services.</p>
+                </div>
+                
+                <div class="group bg-white dark:bg-zinc-800 p-8 rounded-3xl card-hover border border-transparent hover:border-red-200 dark:hover:border-red-900">
+                    <div class="w-16 h-16 bg-red-100 dark:bg-red-950 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-boxes-packing text-4xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">Cargo Handling</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400">Safe handling, packaging & last-mile delivery solutions.</p>
+                </div>
+                
+                <div class="group bg-white dark:bg-zinc-800 p-8 rounded-3xl card-hover border border-transparent hover:border-red-200 dark:hover:border-red-900">
+                    <div class="w-16 h-16 bg-red-100 dark:bg-red-950 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-network-wired text-4xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">Supply Chain</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400">End-to-end supply chain visibility and optimization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENTS -->
+    <section id="clients" class="py-20 bg-white dark:bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="heading-font text-4xl font-bold text-center mb-12">Trusted by Industry Leaders</h2>
+            <div class="overflow-hidden">
+                <div id="clientCarousel" class="flex gap-16 items-center justify-center animate-marquee whitespace-nowrap text-3xl font-bold text-zinc-400 dark:text-zinc-500">
+                    <span class="px-8">BKT</span>
+                    <span class="px-8">SAINT-GOBAIN</span>
+                    <span class="px-8">JAQUAR GROUP</span>
+                    <span class="px-8">BHIWADI CYLINDERS</span>
+                    <span class="px-8">SAPPHIRE PVT. LTD.</span>
+                    <span class="px-8">BKT</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRACKING -->
+    <section id="track" class="py-24 bg-gradient-to-br from-blue-50 to-zinc-100 dark:from-zinc-800 dark:to-zinc-900">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="heading-font text-5xl font-bold text-center mb-6">Track Your Shipment</h2>
+            <p class="text-center text-zinc-600 dark:text-zinc-400 mb-10">Real-time visibility of your cargo</p>
+            
+            <div class="bg-white dark:bg-zinc-800 rounded-3xl shadow-2xl p-10">
+                <div class="flex gap-4">
+                    <input id="trackingId" type="text" placeholder="Enter Tracking ID (e.g. TBL20260622)" 
+                           class="flex-1 px-6 py-4 border border-zinc-300 dark:border-zinc-700 rounded-2xl focus:outline-none focus:border-red-500 text-lg bg-transparent">
+                    <button onclick="simulateTracking()" class="px-10 bg-blue-900 hover:bg-blue-950 text-white font-semibold rounded-2xl">TRACK</button>
+                </div>
+                
+                <div id="trackingResult" class="hidden mt-8 p-6 bg-zinc-50 dark:bg-zinc-900 rounded-2xl"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-zinc-900 text-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="heading-font text-5xl font-bold mb-8">Get In Touch</h2>
+                <form id="contactForm" class="space-y-6">
+                    <input type="text" placeholder="Your Name" required class="w-full px-6 py-4 bg-zinc-800 border border-zinc-700 rounded-2xl focus:outline-none">
+                    <input type="email" placeholder="Email Address" required class="w-full px-6 py-4 bg-zinc-800 border border-zinc-700 rounded-2xl focus:outline-none">
+                    <input type="tel" placeholder="Phone Number" class="w-full px-6 py-4 bg-zinc-800 border border-zinc-700 rounded-2xl focus:outline-none">
+                    <textarea placeholder="Message / Requirements" rows="5" class="w-full px-6 py-4 bg-zinc-800 border border-zinc-700 rounded-2xl focus:outline-none"></textarea>
+                    <button type="submit" class="w-full py-5 bg-red-600 hover:bg-red-700 text-lg font-semibold rounded-2xl transition">SEND MESSAGE</button>
+                </form>
+            </div>
+            
+            <div>
+                <div class="mb-10">
+                    <h3 class="text-xl font-semibold mb-6 flex items-center gap-3">
+                        <i class="fas fa-map-marker-alt text-red-500"></i> Visit Us
+                    </h3>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.5!2d76.84088897705078!3d28.212169647216797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDEyJzQzLjgiTiA3NsKwNTAnMzIuMiJF!5e0!3m2!1sen!2sin!4v1700000000000" 
+                            width="100%" height="340" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-8 text-sm">
+                    <div><p class="font-semibold mb-2">📍 Address</p><p class="text-zinc-400">Bhiwadi Industrial Area, Rajasthan</p></div>
+                    <div><p class="font-semibold mb-2">📞 Phone</p><p class="text-zinc-400">+91 98765 43210</p></div>
+                    <div><p class="font-semibold mb-2">✉️ Email</p><p class="text-zinc-400">info@tirupatibalajilogistics.com</p></div>
+                    <div><p class="font-semibold mb-2">🕒 Operations</p><p class="text-zinc-400">24/7</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-12 text-center text-zinc-400">
+        <p>&copy; 2026 Tirupati Balaji Logistics. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Dark Mode
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('themeIcon');
+            if (document.documentElement.classList.contains('dark')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.theme = 'dark';
+            } else {
+                icon.classList.add('fa-moon');
+                icon.classList.remove('fa-sun');
+                localStorage.theme = 'light';
+            }
+        }
+
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            document.getElementById('themeIcon').classList.add('fa-sun');
+        }
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        // 3D Truck (Fixed & Enhanced)
+        function init3DTruck() {
+            const canvas = document.getElementById('truckCanvas');
+            if (!canvas) return;
+            
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(48, canvas.width / canvas.height, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+            
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setSize(canvas.width, canvas.height);
+            
+            camera.position.set(0, 5, 15);
+            camera.lookAt(0, 1.5, 0);
+
+            // Lights
+            scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+            const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
+            scene.add(hemi);
+            const dirLight = new THREE.DirectionalLight(0xffeecc, 1.2);
+            dirLight.position.set(8, 12, 10);
+            scene.add(dirLight);
+
+            const truck = new THREE.Group();
+
+            // Cabin
+            const cabin = new THREE.Mesh(new THREE.BoxGeometry(2.4, 1.9, 2.1), new THREE.MeshPhongMaterial({color: 0x1e40af, shininess: 30}));
+            cabin.position.set(-1.6, 2.1, 0);
+            truck.add(cabin);
+
+            // Trailer
+            const trailer = new THREE.Mesh(new THREE.BoxGeometry(6.2, 2.4, 2.6), new THREE.MeshPhongMaterial({color: 0xdc2626, shininess: 20}));
+            trailer.position.set(2.8, 1.9, 0);
+            truck.add(trailer);
+
+            // Wheels
+            const wheelGeo = new THREE.CylinderGeometry(0.75, 0.75, 0.6, 32);
+            const wheelMat = new THREE.MeshPhongMaterial({color: 0x111111});
+            const wheels = [];
+            const positions = [[-2.6,0.9,1.3],[-2.6,0.9,-1.3],[2.8,0.9,1.3],[2.8,0.9,-1.3]];
+            
+            positions.forEach(pos => {
+                const wheel = new THREE.Mesh(wheelGeo, wheelMat);
+                wheel.rotation.z = Math.PI / 2;
+                wheel.position.set(...pos);
+                truck.add(wheel);
+                wheels.push(wheel);
+            });
+
+            scene.add(truck);
+
+            let time = 0;
+            function animate() {
+                requestAnimationFrame(animate);
+                time += 0.018;
+                truck.rotation.y = Math.sin(time * 0.8) * 0.15;
+                wheels.forEach(w => w.rotation.x += 0.12);
+                renderer.render(scene, camera);
+            }
+            animate();
+        }
+
+        // Client Carousel
+        const style = document.createElement('style');
+        style.innerHTML = `@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`;
+        document.head.appendChild(style);
+
+        function startCarousel() {
+            const marquee = document.getElementById('clientCarousel');
+            marquee.style.animation = 'marquee 30s linear infinite';
+        }
+
+        // Tracking Demo
+        function simulateTracking() {
+            const input = document.getElementById('trackingId').value.trim();
+            const result = document.getElementById('trackingResult');
+            if (!input) return;
+            
+            result.classList.remove('hidden');
+            result.innerHTML = `
+                <div class="flex justify-between mb-6">
+                    <div><p class="text-sm text-zinc-500">Tracking ID</p><p class="font-mono text-2xl font-bold">${input}</p></div>
+                    <span class="inline-block px-6 py-2 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full font-semibold">IN TRANSIT</span>
+                </div>
+                <div class="space-y-6">
+                    <div class="flex gap-6"><div class="w-7 h-7 rounded-full bg-green-500 text-white flex items-center justify-center text-sm">1</div><div><p class="font-semibold">Picked up - Bhiwadi</p><p class="text-sm text-zinc-500">20 Jun 2026, 08:15 AM</p></div></div>
+                    <div class="flex gap-6"><div class="w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center text-sm">2</div><div><p class="font-semibold">In Transit towards Delhi-NCR</p><p class="text-sm text-zinc-500">87 km away • Estimated delivery: Tomorrow</p></div></div>
+                </div>
+            `;
+        }
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("✅ Thank you! Our team will contact you shortly.");
+            this.reset();
+        });
+
+        // Initialize
+        window.onload = () => {
+            init3DTruck();
+            startCarousel();
+        };
+    </script>
+</body>
+</html>
